@@ -1,0 +1,21 @@
+spring:
+  application.name: example
+  profiles.active: dev
+  jmx.default-domain: example
+
+server:
+  servlet-path: /example/*
+  servlet.context-path: /example
+
+endpoints:
+  enabled: false
+  health.enabled: true
+  info.enabled: true
+  metrics.enabled: true
+
+---
+spring:
+  profiles: dev
+---
+spring:
+  profiles: other
