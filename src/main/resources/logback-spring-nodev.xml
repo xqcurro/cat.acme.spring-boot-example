@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<included>
+
+	<!-- Path to the LOG directory -->
+    <property name="LOG_PATH" value="C:/ebNew/apache-tomcat/apache-tomcat-8.0.36/logs" />
+
+	<!-- Common configuration -->
+    <include resource="logback-spring-base.xml" />
+
+    <root level="INFO">
+        <appender-ref ref="jsonfile" />
+    </root>
+
+</included>

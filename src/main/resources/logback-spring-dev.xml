@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<included>
+
+	<!-- Path to the LOG directory -->
+    <property name="LOG_PATH" value="${java.io.tmpdir:-/tmp}/logs" />
+
+	<!-- Common configuration -->
+    <include resource="logback-spring-base.xml" />
+
+    <!-- Flat file Appender -->​
+    <appender name="flatfile" class="ch.qos.logback.core.FileAppender">
+        <file>${LOG_FILE}</file>
+        <append>false</append>
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <root level="INFO" additivity="false">
+        <appender-ref ref="console" />
+		<appender-ref ref="flatfile" />
+        <appender-ref ref="jsonfile" />
+    </root>
+
+    <logger name="cat.acme" level="DEBUG" additivity="false">
+        <appender-ref ref="console" />
+        <appender-ref ref="flatfile" />
+        <appender-ref ref="jsonfile" />
+    </logger>
+
+</included>
