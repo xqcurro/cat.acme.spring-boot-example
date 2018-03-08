@@ -4,7 +4,7 @@
 
   	<groupId>cat.acme</groupId>
   	<artifactId>spring-boot-example</artifactId>
-  	<version>0.0.1-SNAPSHOT</version>
+  	<version>0.0.2-SNAPSHOT</version>
   	<packaging>${project.packaging}</packaging>
 
   	<name>Spring Boot Example</name>
@@ -21,13 +21,14 @@
     <dependencyManagement>
     	<dependencies>
         	<dependency>
-            	<groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-parent</artifactId>
-                <version>${spring.boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-        	</dependency>
-    	</dependencies>
+				<!-- Import dependency management from Spring Boot -->
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>2.0.0.RELEASE</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+    	</dependencies> 
 	</dependencyManagement>
 
 	<dependencies>
@@ -44,6 +45,28 @@
     		<artifactId>spring-boot-starter-tomcat</artifactId>
     		<scope>provided</scope>
 		</dependency>
+
+		<dependency>
+        	<groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>4.11</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>ch.qos.logback</groupId>
+                    <artifactId>logback-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-databind</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
 		<!-- TEST DEPENDENCIES -->
  		<dependency>
@@ -96,7 +119,7 @@
         	</properties>
         </profile>
 		<profile>
-			<id>other</id>
+			<id>nodev</id>
         	<activation>
             	<activeByDefault>false</activeByDefault>
         	</activation>
